@@ -1,0 +1,27 @@
+import scrapy
+import json
+
+
+class FeedSpider(scrapy.Spider):
+    name = "feeds"
+
+    def start_requests(self):
+        f = open('feeds_link.json', )
+        feeds = json.load(f)
+        for feed in feeds:
+            yield scrapy.Request(url=feed['url'], callback=self.parse)
+
+    def parse(self, response):
+        feed = response.css('channel > title::text').get()
+        for item in response.css('item'):
+            content = item.xpath("./content:encoded",
+                                 namespaces={'content': 'http://purl.org/rss/1.0/modules/content/'}).get()
+            yield {
+                "title": item.css('title::text').get(),
+                "link": item.css('link::text').get(),
+                # "description": item.css('description::text').get(),
+                # "content": content,
+                # "author": item.css('author::text').get(),
+                # "pub_date": item.css('pubDate::text').get(),
+                "feed": feed
+            }
