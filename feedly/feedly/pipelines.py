@@ -11,7 +11,6 @@ from itemadapter import ItemAdapter
 class FeedlyPipeline:
     def process_item(self, item, spider):
         print('***********++++++++++++++')
-        print(item)
         import json
         import requests
         headers = {'Content-Type': 'application/json'}
