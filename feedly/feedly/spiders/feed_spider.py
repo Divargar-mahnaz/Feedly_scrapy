@@ -16,14 +16,11 @@ class FeedSpider(scrapy.Spider):
         for item in response.css('item'):
             content = item.xpath("./content:encoded",
                                  namespaces={'content': 'http://purl.org/rss/1.0/modules/content/'}).get()
-            author = item.css('author::text').get()
-            content = content if content else ''
-            author = author if author else ''
             yield {
                 "title": item.css('title::text').get(),
                 "link": item.css('link::text').get(),
                 "description": item.css('description::text').get(),
                 "content": content,
-                "author": author,
+                "author": item.css('author::text').get(),
                 "feed": feed
             }
