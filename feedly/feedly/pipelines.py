@@ -15,6 +15,6 @@ class FeedlyPipeline:
         import requests
         headers = {'Content-Type': 'application/json'}
         result = requests.post('http://127.0.0.1:8000/feed/scrapy', data=json.dumps(item), headers=headers)
-        if result.status_code != 201:
+        if result.status_code != 200:
             print("ERROR>>>> {}".format(json.loads(result.content)))
         return item
