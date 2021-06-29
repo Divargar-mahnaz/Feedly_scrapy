@@ -14,5 +14,13 @@
   {
     "name": "DEV Community",
     "url": "https://dev.to/feed"
+  },
+  {
+    "name": "AI Trends",
+    "url": "https://www.aitrends.com/feed/"
+  },
+  {
+    "name": "CodeProject Latest Articles",
+    "url": "https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1"
   }
 ]

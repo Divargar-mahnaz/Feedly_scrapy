@@ -22,5 +22,5 @@ class FeedSpider(scrapy.Spider):
                 "description": item.css('description::text').get(),
                 "content": content,
                 "author": item.css('author::text').get(),
-                # "feed": feed
+                "feed": feed
             }
